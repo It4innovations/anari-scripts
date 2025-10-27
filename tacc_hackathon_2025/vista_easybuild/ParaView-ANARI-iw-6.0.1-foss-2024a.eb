@@ -9,8 +9,20 @@ description = "ParaView is a scientific parallel visualizer."
 toolchain = {'name': 'foss', 'version': '2024a'}
 toolchainopts = {'pic': True, 'usempi': True}
 
-source_urls = ['https://github.com/ingowald/paraview/archive/refs/heads']
-sources = ['master.tar.gz']
+# --- Fetch from Git with submodules ---
+sources = [{
+    'filename': 'paraview-master.tar.gz',   # EasyBuild will create this tarball from the clone
+    'git_config': {
+        'url': 'https://github.com/ingowald/',
+        'repo_name': 'paraview',
+        'commit': 'master',  # Consider using a specific commit SHA here
+        'recursive': True,    # This handles submodules
+    },
+}]
+# No source_urls/checksums needed for git sources
+
+#source_urls = ['https://github.com/ingowald/paraview/archive/refs/heads']
+#sources = ['master.tar.gz']
 
 #local_download_suffix = 'download.php?submit=Download&version=v%(version_major_minor)s&type=source&os=all&downloadFile='
 #source_urls = ['https://www.paraview.org/paraview-downloads/%s' % local_download_suffix]
@@ -28,7 +40,8 @@ sources = ['master.tar.gz']
 
 builddependencies = [
     ('CMake', '3.29.3'),
-    ('Ninja', '1.12.1')
+    ('Ninja', '1.12.1'),
+    #('git', '2.45.1')
 ]
 dependencies = [
     ('Python', '3.12.3'),
