@@ -1,0 +1,50 @@
+easyblock = 'CMakeMake'
+
+name = 'embree'
+version = '4.4.0'
+
+homepage = 'https://github.com/RenderKit/embree'
+description = """
+Intel RenderKit embree/common C++/CMake infrastructure
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '13.3.0'}
+toolchainopts = {'pic': True}
+
+source_urls = ['https://github.com/RenderKit/embree/archive/refs/tags']
+sources = ['v%(version)s.tar.gz']
+#checksums = ['79334ef3dadddb03ec0483fbf49bf690fb8902d5c2732d977b2c116651484cc6']
+
+builddependencies = [
+    ('binutils', '2.42'),
+    ('CMake', '3.29.3'),
+]
+
+dependencies = [
+    ('tbb', '2021.13.0'),
+    ('ispc', '1.27.0'),
+]
+
+start_dir = '%(name)s-%(version)s'
+
+_copts = [
+    # Basic configuration
+    '-DEMBREE_ISPC_SUPPORT=ON',
+    '-DEMBREE_ISPC_EXECUTABLE=$EBROOTISPC/bin/ispc',
+
+    '-DEMBREE_ISA_NEON=ON',
+    '-DEMBREE_ISA_NEON2X=OFF',
+
+    '-DEMBREE_TUTORIALS=OFF',
+    '-DEMBREE_TUTORIALS_GLFW=OFF'
+    #'-DEMBREE_TASKING_SYSTEM=INTERNAL',
+    ]
+
+configopts = ' '.join(_copts)
+
+sanity_check_paths = {
+    'dirs': ['include/embree4'],
+    'files': ['lib/libembree4.so'],
+}
+
+moduleclass = 'vis'

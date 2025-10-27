@@ -1,0 +1,33 @@
+easyblock = 'CMakeMake'
+
+name = 'ANARI-SDK'
+version = '0.15.0'
+
+homepage = 'https://www.khronos.org/anari/'
+description = "The ANARI Cross-Platform 3D Rendering Engine API."
+
+toolchain = {'name': 'foss', 'version': '2024a'}
+
+source_urls = ['https://github.com/KhronosGroup/ANARI-SDK/archive/refs/heads']
+sources = ['next_release.tar.gz']
+
+builddependencies = [
+    ('CMake', '3.29.3'),
+]
+dependencies = [
+]
+
+_copts = [
+    # AARCH64
+    '-DEMBREE_ISA_NEON=ON',
+    '-DEMBREE_MAX_ISA=NEON'    
+    ]
+
+configopts = ' '.join(_copts)
+
+sanity_check_paths = {
+    'files': ['bin/anariInfo', 'bin/anariRenderTests', 'lib/libanari.so'],
+    'dirs': ['include/anari'],
+}
+
+moduleclass = 'vis'

@@ -1,0 +1,34 @@
+easyblock = 'CMakeMake'
+
+name = 'rkcommon'
+version = '1.14.2'
+
+homepage = 'https://github.com/RenderKit/rkcommon'
+description = """
+Intel RenderKit common C++/CMake infrastructure
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '13.3.0'}
+toolchainopts = {'pic': True}
+
+source_urls = ['https://github.com/ospray/rkcommon/archive/']
+sources = ['v%(version)s.tar.gz']
+checksums = ['79334ef3dadddb03ec0483fbf49bf690fb8902d5c2732d977b2c116651484cc6']
+
+builddependencies = [
+    ('binutils', '2.42'),
+    ('CMake', '3.29.3'),
+]
+
+dependencies = [
+    ('tbb', '2021.13.0'),
+]
+
+start_dir = '%(name)s-%(version)s'
+
+sanity_check_paths = {
+    'dirs': ['bin', 'include/rkcommon'],
+    'files': ['lib/librkcommon.so'],
+}
+
+moduleclass = 'vis'
