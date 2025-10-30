@@ -1,0 +1,41 @@
+easyblock = 'CMakeMake'
+
+name = 'Barney'
+version = '0.10.0'
+
+homepage = 'https://github.com/ingowald/barney.git'
+description = "A Multi-GPU (and optionally, Multi-Node) Implementation of the ANARI Rendering API."
+
+toolchain = {'name': 'foss', 'version': '2024a'}
+
+sources = [{
+    'filename': 'barney-develop.tar.gz',   # EasyBuild will create this tarball from the clone
+    'git_config': {
+        'url': 'https://github.com/ingowald',
+        'repo_name': 'barney',
+        'commit': 'devel',  # Consider using a specific commit SHA here
+        'recursive': True,    # This handles submodules
+    },
+}]
+
+builddependencies = [
+    ('CMake', '3.29.3'),
+]
+dependencies = [
+    ('CUDA', '12.8.0', '', True),
+    ('ANARI-SDK', '0.15.0'),
+]
+
+_copts = [
+    '-DBARNEY_BUILD_ANARI=ON',
+    '-DBARNEY_MPI=ON'    
+    ]
+
+configopts = ' '.join(_copts)
+
+sanity_check_paths = {
+    'files': ['lib/libbarney.so'],
+    'dirs': ['include/barney'],
+}
+
+moduleclass = 'vis'
