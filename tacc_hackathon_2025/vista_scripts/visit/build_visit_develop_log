@@ -1,0 +1,71 @@
+34
+./build_visit_develop --anari --skip-opengl-context-check --no-thirdparty
+Started: Tue Oct 21 01:43:55 PM CDT 2025
+34
+enabling any dependent libraries
+ERROR: library cmake was not set anari depends on it, please enable
+Error in build process. See /home1/07881/jar091/scratch/scripts/visit/build_visit_develop_log for more information. If the error is unclear, please include /home1/07881/jar091/scratch/scripts/visit/build_visit_develop_log and contact the VisIt project via https://visit-help.llnl.gov. You may need to compress the /home1/07881/jar091/scratch/scripts/visit/build_visit_develop_log using a program like gzip so it will fit within the size limits for attachments.
+Log file full path:  /home1/07881/jar091/scratch/scripts/visit/build_visit_develop_log
+Processing bsd license.
+bv_vtk_initialize
+bv_python_info
+setting up vtk for version 9.5.0
+bv_enable_group disabling cmake
+bv_enable_group disabling zlib
+bv_enable_group disabling python
+bv_enable_group disabling qt
+bv_enable_group disabling vtk
+bv_enable_group disabling osmesa
+bv_enable_group disabling llvm
+[build_visit invocation arguments] --anari --skip-opengl-context-check --no-thirdparty
+[build_visit build mode ] Release
+Fortran support for thirdparty libraries disabled.
+34
+./build_visit_develop --anari --skip-opengl-context-check --no-thirdparty
+Started: Tue Oct 21 01:49:19 PM CDT 2025
+34
+enabling any dependent libraries
+ERROR: library cmake was not set anari depends on it, please enable
+Error in build process. See /scratch/07881/jar091/scripts/visit/build_visit_develop_log for more information. If the error is unclear, please include /scratch/07881/jar091/scripts/visit/build_visit_develop_log and contact the VisIt project via https://visit-help.llnl.gov. You may need to compress the /scratch/07881/jar091/scripts/visit/build_visit_develop_log using a program like gzip so it will fit within the size limits for attachments.
+Log file full path:  /scratch/07881/jar091/scripts/visit/build_visit_develop_log
+Processing bsd license.
+bv_vtk_initialize
+bv_python_info
+setting up vtk for version 9.5.0
+bv_enable_group disabling cmake
+bv_enable_group disabling zlib
+bv_enable_group disabling python
+bv_enable_group disabling qt
+bv_enable_group disabling vtk
+bv_enable_group disabling osmesa
+bv_enable_group disabling llvm
+[build_visit invocation arguments] --anari --skip-opengl-context-check --no-thirdparty
+[build_visit build mode ] Release
+Fortran support for thirdparty libraries disabled.
+34
+./build_visit_develop --anari --skip-opengl-context-check --no-thirdparty
+Started: Tue Oct 21 01:49:32 PM CDT 2025
+34
+enabling any dependent libraries
+ERROR: library cmake was not set anari depends on it, please enable
+Error in build process. See /scratch/07881/jar091/scripts/visit/build_visit_develop_log for more information. If the error is unclear, please include /scratch/07881/jar091/scripts/visit/build_visit_develop_log and contact the VisIt project via https://visit-help.llnl.gov. You may need to compress the /scratch/07881/jar091/scripts/visit/build_visit_develop_log using a program like gzip so it will fit within the size limits for attachments.
+Log file full path:  /scratch/07881/jar091/scripts/visit/build_visit_develop_log
+Processing bsd license.
+bv_vtk_initialize
+bv_python_info
+setting up vtk for version 9.5.0
+[build_visit invocation arguments] --anari
+[build_visit build mode ] Release
+Processing bsd license.
+bv_vtk_initialize
+bv_python_info
+setting up vtk for version 9.5.0
+[build_visit invocation arguments] --mesagl --llvm
+[build_visit build mode ] Release
+Fortran support for thirdparty libraries disabled.
+34
+./build_visit_develop --mesagl --llvm
+Started: Tue Oct 21 01:50:08 PM CDT 2025
+34
+enabling any dependent libraries
+The third party library location, "./third_party" does not exist. Create it? [yes/no]

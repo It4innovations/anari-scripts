@@ -22,8 +22,19 @@ visualizing data from over 120 different scientific data formats.
 
 toolchain = {'name': 'foss', 'version': '2024a'}
 
-source_urls = ['https://github.com/jar091/visit/archive/refs/heads/mj']
-sources = ['develop.tar.gz']
+# --- Fetch from Git with submodules ---
+sources = [{
+    'filename': 'visit-mj-develop.tar.gz',   # EasyBuild will create this tarball from the clone
+    'git_config': {
+        'url': 'https://github.com/jar091',
+        'repo_name': 'visit',
+        'commit': 'mj/develop',  # Consider using a specific commit SHA here
+        'recursive': True,    # This handles submodules
+    },
+}]
+
+#source_urls = ['https://github.com/jar091/visit/archive/refs/heads/mj']
+#sources = ['develop.tar.gz']
 #checksums = ['942108cb294f4c9584a1628225b0be39c114c7e9e01805fb335d9c0b507689f5']
 
 start_dir = 'src'
@@ -60,7 +71,8 @@ configopts += "-DCMAKE_PREFIX_PATH=$EBROOTQT6 "
 configopts += "-DQt6_DIR=$EBROOTQT6/lib/cmake/Qt6 "
 configopts += "-DQT_PLUGINS_DIR=$EBROOTQT6/plugins "
 
-preconfigopts = 'VISIT_QT_DIR=$EBROOTQT6 '
+preconfigopts = 'GIT_LFS_SKIP_SMUDGE=1 '
+#preconfigopts = 'export VISIT_QT_DIR=$EBROOTQT6 && export GIT_LFS_SKIP_SMUDGE=1 && '
 
 # add missing include to fix make step
 #prebuildopts = "sed -i '23 a #include <cmath>' %(builddir)s/visit-develop/src/gui/QvisStripChart.C && "
@@ -70,5 +82,10 @@ preconfigopts = 'VISIT_QT_DIR=$EBROOTQT6 '
 #    ['%(version)s/linux-x86_64/plugins/databases/libEChomboDatabase_par.so'],
 #    'dirs': ['%(version)s/bin'],
 #}
+
+sanity_check_paths = {
+    'files': ['bin/visit'],
+    'dirs': ['current/bin'],
+}
 
 moduleclass = 'vis'

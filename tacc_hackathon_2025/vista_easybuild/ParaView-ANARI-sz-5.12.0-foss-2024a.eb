@@ -9,8 +9,18 @@ description = "ParaView is a scientific parallel visualizer."
 toolchain = {'name': 'foss', 'version': '2024a'}
 toolchainopts = {'pic': True, 'usempi': True}
 
-source_urls = ['https://github.com/jar091/paraview-sz/archive/refs/heads']
-sources = ['anari.tar.gz']
+#source_urls = ['https://github.com/jar091/paraview-sz/archive/refs/heads']
+#sources = ['anari.tar.gz']
+# --- Fetch from Git with submodules ---
+sources = [{
+    'filename': 'paraview-anari.tar.gz',   # EasyBuild will create this tarball from the clone
+    'git_config': {
+        'url': 'https://github.com/jar091/',
+        'repo_name': 'paraview-sz',
+        'commit': 'anari',  # Consider using a specific commit SHA here
+        'recursive': True,    # This handles submodules
+    },
+}]
 
 #local_download_suffix = 'download.php?submit=Download&version=v%(version_major_minor)s&type=source&os=all&downloadFile='
 #source_urls = ['https://www.paraview.org/paraview-downloads/%s' % local_download_suffix]
